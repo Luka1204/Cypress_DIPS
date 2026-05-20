@@ -1,4 +1,4 @@
-describe('Casos de prueba API Compra Exitosa', () => {
+describe('API | Casos de prueba 401 Compra', () => {
 
     let token
     let user_id

@@ -1,4 +1,4 @@
-describe('Casos de prueba de FRONT', () => {
+describe('FRONT | Casos de prueba Comprar carrito exitosamente y visualizar orden de compra ', () => {
 
   it.only('Comprar carrito exitosamente y visualizar orden de compra', () => {
     //Accion paso 1:
