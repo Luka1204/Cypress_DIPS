@@ -1,3 +1,6 @@
+import user from '../../fixtures/user.json'
+
+
 describe('Casos de prueba de FRONT', () => {    
     it.only('Borrar todos los productos del carrito utilizando el boton de atajo | Emmanuel Delorenzo', () => {
       cy.request({
@@ -12,8 +15,8 @@ describe('Casos de prueba de FRONT', () => {
         expect(Response.status).to.eq(200)})
       //Accion paso 1:
       cy.visit('https://app.bookdbqa.online/login')
-      cy.get('input[placeholder="Username"]').type('Emma76892')
-      cy.get('input[formcontrolname="password"]').type('Lugano1y2')
+      cy.get('input[placeholder="Username"]').type(user.name)
+      cy.get('input[formcontrolname="password"]').type(user.password)
       cy.get('app-login button').contains('Login').click()
 
       //Respuesta del sistema paso 1:

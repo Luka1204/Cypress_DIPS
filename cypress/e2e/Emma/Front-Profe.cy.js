@@ -1,3 +1,8 @@
+import user from '../../fixtures/user.json'    // importamos el archivo user para usar la info
+const pageLogin  = require('../../support/page_objects/pageLogin')
+
+
+
 describe('Casos de prueba de FRONT', () => {
   it('Comprar carrito exitosamente y visualizar orden de compra', () => {
     cy.request({
@@ -13,9 +18,11 @@ describe('Casos de prueba de FRONT', () => {
   
     //Accion paso 1:
     cy.visit('https://app.bookdbqa.online/login')
-    cy.get('input[formcontrolname="username"]').type('Emma76892')
-    cy.get('input[formcontrolname="password"]').type('Lugano1y2')
-    cy.get('app-login button').contains('Login').click()
+    
+    
+    pageLogin.typeUseName(user.name);
+    pageLogin.typePassword(user.password);
+    pageLogin.clickButtonLogin();
 
     //Respuesta del sistema paso 1:
     cy.url().should('include', 'https://app.bookdbqa.online/')
