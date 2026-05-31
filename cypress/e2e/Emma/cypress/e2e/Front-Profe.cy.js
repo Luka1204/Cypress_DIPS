@@ -1,6 +1,13 @@
 import user from '../fixtures/user.json'   
+import url from '../fixtures/url.json'
+import componentNav from '../support/page_objects/componentNav'
+import pageHome from '../support/page_objects/pageHome'
+import pageForm from '../support/page_objects/pageForm'
+
 const pageLogin  = require('../support/page_objects/pageLogin')
 const Pagehome  = require('../support/page_objects/pageHome')
+const PageCart  = require('../support/page_objects/pageCart')
+
 
 
 describe('Casos de prueba de FRONT', () => {
@@ -15,53 +22,48 @@ describe('Casos de prueba de FRONT', () => {
       }
     }).then((Response) => {
       expect(Response.status).to.eq(200)})
-  
-    //Accion paso 1:
-    cy.visit('https://app.bookdbqa.online/login')
-    
+
+    cy.visit(url.login)
     
     pageLogin.typeUseName(user.name);
     pageLogin.typePassword(user.password);
     pageLogin.clickButtonLogin();
 
-    //Respuesta del sistema paso 1:
-    cy.url().should('include', 'https://app.bookdbqa.online/')
     
+    cy.url().should('include', url.home)
     Pagehome.isBookVisible();
-    cy.get('app-book-card').contains('Harry Potter and the Chamber of Secrets').should('be.visible')
-    cy.get('#mat-badge-content-0').contains('0').should('be.visible')
-
-    //Accion paso 2:
+    componentNav.validation('0')
+    
     Pagehome.clicAddToCartButton()
 
-    //Respuesta del sistema paso 2:
-    cy.contains('One Item added to cart').should('be.visible')
-    cy.get('#mat-badge-content-0').contains('1').should('be.visible')
-
-    //Accion paso 3:
-    cy.get('.mdc-icon-button.mat-mdc-icon-button.mat-mdc-button-base.mat-unthemed').contains('shopping_cart').click()
-
-    //Respuesta del sistema paso 3:
-    cy.get('.mdc-data-table__content').should('be.visible')
-
-    //Accion paso 4:
-    cy.get('.mdc-button.mat-mdc-button-base.my-2.mdc-button--raised.mat-mdc-raised-button.mat-warn').click()
-
-    //Respuesta del sistema paso 4:
-    cy.url().should('include','https://app.bookdbqa.online/checkout')
-    cy.get('.table') //orden
-    cy.get('.mat-mdc-card-content') //formulario
-
-    //Accion paso 5:
-    cy.get('input[formcontrolname="name"]').type('prueba')
-    cy.get('input[formcontrolname="addressLine1"]').type('prueba1')
-    cy.get('input[formcontrolname="addressLine2"]').type('prueba2')
-    cy.get('input[formcontrolname="pincode"]').type('123456')
-    cy.get('input[formcontrolname="state"]').type('prueba2')
-
-    //Respuesta del sistema paso 5:
     
-    // NO TIENE
+    pageHome.MessageAddBook()
+    componentNav.validation('1')
+
+     
+    componentNav.ClicShopping_cart()
+
+    
+    PageCart.visualize_book_title()
+
+    
+    PageCart.clicCheckOutButton()
+
+    
+    cy.url().should('include',url.checkout)
+    pageForm.view_order()
+    pageForm.view_form
+
+    
+
+    
+    pageForm.typeName('prueba')
+    pageForm.typeaddressLine1('prueba1')
+    pageForm.typeaddressLine2('prueba2')
+    pageForm.typepincode('123456')
+    pageForm.typestate('prueba2')  
+
+    
 
     //Accion paso 6:  
     cy.get('button').contains(' Place Order').click()

@@ -4,7 +4,7 @@ import user from '../../fixtures/user.json'
 class login {
 
 typeUseName(name){
-cy.get('input[placeholder="Username"]').type(name)
+cy.get('input[placeholder="Username"]').type(user.name)
 }
 typePassword(){
 cy.get('input[formcontrolname="password"]').type(user.password)

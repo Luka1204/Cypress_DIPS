@@ -8,4 +8,7 @@ clicAddToCartButton(){
     cy.get('button').contains('Add to Cart').click()
     }
 
+MessageAddBook(){
+    cy.contains('One Item added to cart').should('be.visible')
+}
 }module.exports = new Pagehome();
