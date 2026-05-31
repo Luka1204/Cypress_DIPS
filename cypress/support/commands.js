@@ -23,3 +23,27 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+import './page_objects/pageRequest.js'
+import './page_objects/pageLogin.js'
+import './page_objects/pageCompraExito.js'
+
+const pageRequest = require('./page_objects/pageRequest.js');
+const compraExito = require('./page_objects/pageCompraExito.js');
+const pageLogin = new require('./page_objects/pageLogin.js');
+Cypress.Commands.add('getRequest', (url, headers, body) => {
+    return pageRequest.getRequest(url, headers, body);
+})
+Cypress.Commands.add('postRequest', (url, headers, body) => {
+    return pageRequest.postRequest(url, headers, body);
+})
+
+Cypress.Commands.add('compraExitoAPI', () => {
+    
+    pageLogin.loginApi().then((response)=>{
+        var token = response.token
+        var user_id = response.user_id
+        compraExito.comparCarrito(token, user_id);
+        compraExito.checkOut(token, user_id);
+        compraExito.verOrder(token, user_id);
+    });
+})

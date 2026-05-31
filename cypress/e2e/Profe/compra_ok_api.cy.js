@@ -1,5 +1,9 @@
 describe('API | Casos de prueba Compra Exitosa', () => {
 
+    it('Comprar carrito exitosamente', () => {
+        cy.compraExitoAPI()
+    })
+/* 
     let token
     let user_id
 
@@ -77,6 +81,6 @@ describe('API | Casos de prueba Compra Exitosa', () => {
 
         })
 
-    })
+    }) */
 
 })
