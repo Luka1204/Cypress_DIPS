@@ -1,5 +1,6 @@
 {
     "login": "https://app.bookdbqa.online/login",
     "home":"https://app.bookdbqa.online/",
-    "checkout": "https://app.bookdbqa.online/checkout"
+    "checkout": "https://app.bookdbqa.online/checkout",
+    "My_Orders": "https://app.bookdbqa.online/myorders"
 }

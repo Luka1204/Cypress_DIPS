@@ -26,4 +26,8 @@ view_form(){
     cy.get('.mat-mdc-card-content')
 }
 
+clickPlace_Order(){
+    cy.get('button').contains(' Place Order').click()
+    }
+
 }module.exports = new PageForm();

@@ -3,10 +3,12 @@ import url from '../fixtures/url.json'
 import componentNav from '../support/page_objects/componentNav'
 import pageHome from '../support/page_objects/pageHome'
 import pageForm from '../support/page_objects/pageForm'
+import pageMyOrders from '../support/page_objects/pageMyOrders'
 
 const pageLogin  = require('../support/page_objects/pageLogin')
 const Pagehome  = require('../support/page_objects/pageHome')
 const PageCart  = require('../support/page_objects/pageCart')
+
 
 
 
@@ -29,52 +31,37 @@ describe('Casos de prueba de FRONT', () => {
     pageLogin.typePassword(user.password);
     pageLogin.clickButtonLogin();
 
-    
     cy.url().should('include', url.home)
     Pagehome.isBookVisible();
     componentNav.validation('0')
     
     Pagehome.clicAddToCartButton()
 
-    
     pageHome.MessageAddBook()
     componentNav.validation('1')
-
      
     componentNav.ClicShopping_cart()
-
     
     PageCart.visualize_book_title()
-
     
     PageCart.clicCheckOutButton()
-
     
     cy.url().should('include',url.checkout)
     pageForm.view_order()
     pageForm.view_form
-
-    
-
     
     pageForm.typeName('prueba')
     pageForm.typeaddressLine1('prueba1')
     pageForm.typeaddressLine2('prueba2')
     pageForm.typepincode('123456')
     pageForm.typestate('prueba2')  
-
+      
+    pageForm.clickPlace_Order()
+   
+    cy.url().should('include',url.My_Orders)
+    pageMyOrders.visualize_My_Orders()
     
-
-    //Accion paso 6:  
-    cy.get('button').contains(' Place Order').click()
-
-    //Respuesta del sistema paso 6:
-    cy.get('.mdc-data-table__content.ng-star-inserted').should('be.visible')
-    cy.url().should('include','https://app.bookdbqa.online/myorders')
-
-    //Accion paso 7:
-
-    cy.get('.mdc-data-table__content.ng-star-inserted').children().first().click()
+    pageMyOrders.clickFirst_purchase_Order()
   })
 })
   
