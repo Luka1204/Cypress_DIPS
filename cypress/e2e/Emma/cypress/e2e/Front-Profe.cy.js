@@ -5,10 +5,10 @@ import pageHome from '../support/page_objects/pageHome'
 import pageForm from '../support/page_objects/pageForm'
 import pageMyOrders from '../support/page_objects/pageMyOrders'
 
-const pageLogin  = require('../support/page_objects/pageLogin')
+
 const Pagehome  = require('../support/page_objects/pageHome')
 const PageCart  = require('../support/page_objects/pageCart')
-
+const pageLogin = require('../support/page_objects/pageLogin')
 
 
 
@@ -27,9 +27,9 @@ describe('Casos de prueba de FRONT', () => {
 
     cy.visit(url.login)
     
-    pageLogin.typeUseName(user.name);
-    pageLogin.typePassword(user.password);
-    pageLogin.clickButtonLogin();
+    pageLogin.typeUserName(name);
+    pageLogin.typeUserPassword(password);
+    pageLogin.clickLoginButton();
 
     cy.url().should('include', url.home)
     Pagehome.isBookVisible();

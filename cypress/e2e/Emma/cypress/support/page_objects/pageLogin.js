@@ -1,16 +1,17 @@
-import user from '../../fixtures/user.json'
+class pageLogin {
+
+    typeUserName(name) {
+        cy.get('input[formcontrolname="username"]').type(name)
+    }
+
+    typeUserPassword(password) {
+        cy.get('input[formcontrolname="password"]').type(password)
+    }
+
+    clickLoginButton() {
+        cy.get('app-login button').contains('Login').click()
+    }
 
 
-class login {
 
-typeUseName(name){
-cy.get('input[placeholder="Username"]').type(user.name)
-}
-typePassword(){
-cy.get('input[formcontrolname="password"]').type(user.password)
-}
-clickButtonLogin(){
-cy.get('app-login button').contains('Login').click()
-}
-
-}module.exports = new login();
+} module.exports = new pageLogin();
