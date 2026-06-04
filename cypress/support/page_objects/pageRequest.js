@@ -17,6 +17,7 @@ class pageRequest
             method: 'POST',
             url: url,
             headers: headers,
+            failOnStatusCode: false,
             body: body
         }).then((response)=>{
             expect(response.status).to.eq(200)

@@ -37,6 +37,16 @@ Cypress.Commands.add('postRequest', (url, headers, body) => {
     return pageRequest.postRequest(url, headers, body);
 })
 
+Cypress.Commands.add('loginApi', (username,password) => {
+    return pageLogin.loginApi(username,password);
+});
+
+Cypress.Commands.add('completarDatosLogin', (username,password) => {
+    pageLogin.typeUseName(username);
+    pageLogin.typePassword(password);
+    pageLogin.clickButtonLogin();
+});
+
 Cypress.Commands.add('compraExitoAPI', () => {
     
     pageLogin.loginApi().then((response)=>{
