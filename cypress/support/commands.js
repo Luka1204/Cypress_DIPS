@@ -49,7 +49,7 @@ Cypress.Commands.add('loginApi', (username,password) => {
 
 Cypress.Commands.add('completarDatosLogin', (username,password) => {
     pageLogin.typeUserName(username);
-    pageLogin.typePassword(password);
+    pageLogin.typeUserPassword(password);
     pageLogin.clickButtonLogin();
 });
 
