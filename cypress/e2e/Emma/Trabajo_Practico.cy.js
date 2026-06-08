@@ -1,14 +1,14 @@
-import user from "../fixtures/user.json"
+import user from "../../fixtures/User.json"
 
-import url from '../fixtures/url.json'
+import url from '../../fixtures/url.json'
 
-import componentNav from '../support/page_objects/componentNav'
+import componentNav from '../../support/page_objects/componentNav'
 
-import pageForm from '../support/page_objects/pageForm'
-import pageMyOrders from '../support/page_objects/pageMyOrders'
+import pageForm from '../../support/page_objects/pageForm'
+import pageMyOrders from '../../support/page_objects/pageMyOrders'
 
-const Pagehome = require('../support/page_objects/pageHome')
-const PageCart = require('../support/page_objects/pageCart')
+const Pagehome = require('../../support/page_objects/pageHome')
+const PageCart = require('../../support/page_objects/pageCart')
 
 
 describe('Casos de prueba de FRONT', () => {

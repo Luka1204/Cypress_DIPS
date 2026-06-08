@@ -1,4 +1,4 @@
-describe('API | Casos de prueba Compra Exitosa', () => {
+describe('API | BIANCA | Casos de prueba Compra Exitosa', () => {
 
     it('Comprar carrito exitosamente', () => {
         cy.compraExitoAPI()

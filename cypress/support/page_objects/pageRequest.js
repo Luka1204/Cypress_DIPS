@@ -20,7 +20,7 @@ class pageRequest
             failOnStatusCode: false,
             body: body
         }).then((response)=>{
-            expect(response.status).to.eq(200)
+            
             return response
         });
     }

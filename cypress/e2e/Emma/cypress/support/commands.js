@@ -1,5 +1,4 @@
 const pageLogin = require('../support/page_objects/pageLogin')
-import user from "../fixtures/user.json"
 import pageHome from "./page_objects/pageHome";
 import componentNav from "./page_objects/componentNav";
 
@@ -7,7 +6,7 @@ import componentNav from "./page_objects/componentNav";
 Cypress.Commands.add('login', (name, password) => {
     pageLogin.typeUserName(name);
     pageLogin.typeUserPassword(password);
-    pageLogin.clickLoginButton();
+    pageLogin.clickButtonLogin();
 })
 
 Cypress.Commands.add('addBookToCart', (cant) => {
