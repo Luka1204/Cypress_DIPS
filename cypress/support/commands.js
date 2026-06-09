@@ -174,3 +174,25 @@ Cypress.Commands.add('AddToFavorite', (userId, itemId, token,codeResponse = 200)
         expect(response.status).to.eq(codeResponse);
     });
 });
+
+
+
+
+Cypress.Commands.add('PlaceOrder', (userId, token,codeResponse = 200) => {
+    cy.request({
+        method: 'GET',
+        
+        url: `https://app.bookdbqa.online/api/Order/${userId}`,
+        failOnStatusCode: false, 
+        headers: {
+            'accept': 'application/json',
+            'content-type': 'application/json',
+            
+            'authorization': token ? `Bearer ${token}` : ''
+        },
+        
+        body: {} 
+    }).then((response) => {
+        expect(response.status).to.eq(codeResponse);
+    });
+});

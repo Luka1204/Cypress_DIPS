@@ -123,4 +123,17 @@ describe('Casos de prueba de APIs', () => {
       });
   })
 
+   it.only('Generar orden de compra | juan Yovera', () => {
+    cy.loginAPI(user.name, user.password)
+      .then((token) => {
+        cy.PlaceOrder(user.userId,token, 200);
+      });
+  })
+
+   it.only('Generar orden de compra | juan Yovera', () => {
+    cy.loginAPI(user.name, user.password)
+      .then((token) => {
+        cy.PlaceOrder(user.userId,"", 401);
+      });
+  })
 })
