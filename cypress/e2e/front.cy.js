@@ -1,4 +1,6 @@
 import user from "../fixtures/user.json";
+import user_luka from "../fixtures/user_luka.json";
+
 
 import url from "../fixtures/url.json";
 
@@ -78,7 +80,7 @@ describe("Casos de prueba de FRONT", () => {
 
   it("FRONT | Verificar login exitoso | Luka Reyes", () => {
     cy.visit("https://app.bookdbqa.online/login");
-    cy.completarDatosLogin(user.username, user.password);
+    cy.completarDatosLogin(user_luka.username, user_luka.password);
     cy.url().should("include", "https://app.bookdbqa.online/");
     cy.get("app-book-card")
       .contains("Harry Potter and the Chamber of Secrets")

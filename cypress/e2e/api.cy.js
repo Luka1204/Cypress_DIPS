@@ -1,38 +1,38 @@
 import user from "../fixtures/user_luka.json";
 describe("Casos de prueba de APIs", () => {
-  it("API | Comprar carrito exitosamente | Bianca Cascio", () => {
-    cy.loginAPI(user.name, user.password).then((token) => {
-      cy.postCheckOutAPI(user.userId, token, 200);
+  it.only("API | Comprar carrito exitosamente | Bianca Cascio", () => {
+    cy.loginApi(user.username, user.password).then((res) => {
+      cy.postCheckOutAPI(res.user_id, res.token, 200);
     });
   });
 
-  it("API | Error al comprar carrito sin token | Bianca Cascio", () => {
-    cy.loginAPI(user.name, user.password).then((token) => {
-      cy.postCheckOutAPI(user.userId, "", 401);
+  it.only("API | Error al comprar carrito sin token | Bianca Cascio", () => {
+    cy.loginApi(user.username, user.password).then((res) => {
+      cy.postCheckOutAPI(res.user_id, "", 401);
     });
   });
 
-  it("API | Agregar un libro a favoritos | Emmanuel Delorenzo", () => {
-    cy.loginAPI(user.name, user.password).then((token) => {
-      cy.AddToFavorite(user.userId, 3, token, 200);
+  it.only("API | Agregar un libro a favoritos | Emmanuel Delorenzo", () => {
+    cy.loginApi(user.username, user.password).then((res) => {
+      cy.AddToFavorite(res.user_id, 3, res.token, 200);
     });
   });
 
-  it("API | Error al agregar un libro a favoritos sin token | Emmanuel Delorenzo", () => {
-    cy.loginAPI(user.name, user.password).then((token) => {
-      cy.AddToFavorite(user.userId, 3, "", 401);
-    });
-  });
-
-  it.only("API | Generar orden de compra | Juan Yovera", () => {
-    cy.loginAPI(user.name, user.password).then((token) => {
-      cy.PlaceOrder(user.userId, token, 200);
+  it.only("API | Error al agregar un libro a favoritos sin token | Emmanuel Delorenzo", () => {
+    cy.loginApi(user.username, user.password).then((res) => {
+      cy.AddToFavorite(res.user_id, 3, "", 401);
     });
   });
 
   it.only("API | Generar orden de compra | Juan Yovera", () => {
-    cy.loginAPI(user.name, user.password).then((token) => {
-      cy.PlaceOrder(user.userId, "", 401);
+    cy.loginApi(user.username, user.password).then((res) => {
+      cy.PlaceOrder(res.user_id, res.token, 200);
+    });
+  });
+
+  it.only("API | Generar orden de compra | Juan Yovera", () => {
+    cy.loginApi(user.username, user.password).then((res) => {
+      cy.PlaceOrder(res.user_id, "", 401);
     });
   });
 
