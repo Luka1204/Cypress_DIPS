@@ -1,31 +1,3 @@
-// ***********************************************
-// This example commands.js shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
-//
-//
-// -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
-import "./page_objects/pageRequest.js";
-import "./page_objects/pageLogin.js";
-import "./page_objects/pageCompraExito.js";
 import user from "../fixtures/user.json";
 import url from "../fixtures/url.json";
 
@@ -125,7 +97,7 @@ Cypress.Commands.add("loginAPI", (username, password) => {
       method: "POST",
       url: "https://app.bookdbqa.online/api/login",
       body: {
-        username: username, // Cambiado de 'user' a 'username'
+        username: username,
         password: password,
       },
     })
@@ -138,7 +110,7 @@ Cypress.Commands.add("postCheckOutAPI", (userId, token, codeResponse) => {
   cy.request({
     method: "POST",
     url: `https://app.bookdbqa.online/api/CheckOut/${userId}`,
-    failOnStatusCode: false, // importante para que cypress no falle automaticamente ante un error 400 o 500
+    failOnStatusCode: false,
     headers: {
       accept: "application/json",
       "content-type": "application/json",
@@ -230,7 +202,6 @@ Cypress.Commands.add("LoginClickLibro", () => {
     .should("be.visible");
 });
 Cypress.Commands.add("BuscarLibro", (userId, token, codeResponse = 200) => {
-  // Usamos los métodos del Page Object
   pageBook.visit();
   pageBook.buscarLibro("Red Rising");
   pageBook.seleccionarSugerencia();
