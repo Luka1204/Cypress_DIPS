@@ -36,6 +36,7 @@ const compraExito = require('./page_objects/pageCompraExito.js');
 const pageLogin = new require('./page_objects/pageLogin.js');
 const pageCarrito = require('./page_objects/pageCarrito.js');
 const pageCheckout = require('./page_objects/pageCheckout.js');
+const pageBook = require('./page_objects/pageBook.js');
 Cypress.Commands.add('getRequest', (url, headers, body) => {
     return pageRequest.getRequest(url, headers, body);
 })
@@ -211,4 +212,18 @@ Cypress.Commands.add('PlaceOrder', (userId, token,codeResponse = 200) => {
     }).then((response) => {
         expect(response.status).to.eq(codeResponse);
     });
+});
+Cypress.Commands.add('LoginClicklLibro', () => {
+    cy.visit("https://app.bookdbqa.online/login");
+    cy.completarDatosLogin(user.username, user.password);
+    cy.url().should("include", "https://app.bookdbqa.online/");
+    cy.get("app-book-card")
+      .contains("Harry Potter and the Chamber of Secrets")
+      .should("be.visible");
+});
+Cypress.Commands.add('BuscarLibro', (userId, token,codeResponse = 200) => {
+      // Usamos los métodos del Page Object
+    pageBook.visit();
+    pageBook.buscarLibro('Red Rising');
+    pageBook.seleccionarSugerencia();
 });

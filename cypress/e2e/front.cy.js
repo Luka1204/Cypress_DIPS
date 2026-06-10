@@ -81,12 +81,7 @@ describe("Casos de prueba de FRONT", () => {
   });
 
   it("FRONT | Verificar login exitoso | Luka Reyes", () => {
-    cy.visit("https://app.bookdbqa.online/login");
-    cy.completarDatosLogin(user_luka.username, user_luka.password);
-    cy.url().should("include", "https://app.bookdbqa.online/");
-    cy.get("app-book-card")
-      .contains("Harry Potter and the Chamber of Secrets")
-      .should("be.visible");
+    cy.LoginClicklLibro();
   });
   it("FRONT | Prueba de filtro por precio con slider | Juan Yovera", () => {
     cy.visit("https://app.bookdbqa.online/");
@@ -94,5 +89,9 @@ describe("Casos de prueba de FRONT", () => {
       .invoke("val", 200) // cambiamos el valor del filtro dentro del imput
       .trigger("change") // mandamos el cambio
       .trigger("input"); // se manda sobre el input
+  });
+
+  it("FRONT | Buscar Libro | Paul Soria", () => {
+    cy.BuscarLibro();
   });
 });
