@@ -7,7 +7,7 @@ const componentNav = require("../support/page_objects/componentNav");
 
 import pageForm from "../support/page_objects/pageForm";
 import pageMyOrders from "../support/page_objects/pageMyOrders";
-
+import pageSlider from "../support/page_objects/pageSlider"
 const Pagehome = require("../support/page_objects/pageHome");
 const PageCart = require("../support/page_objects/pageCart");
 
@@ -83,13 +83,11 @@ describe("Casos de prueba de FRONT", () => {
   it("FRONT | Verificar login exitoso | Luka Reyes", () => {
     cy.LoginClicklLibro();
   });
-  it("FRONT | Prueba de filtro por precio con slider | Juan Yovera", () => {
-    cy.visit("https://app.bookdbqa.online/");
-    cy.get('input[matsliderthumb=""]')
-      .invoke("val", 200) // cambiamos el valor del filtro dentro del imput
-      .trigger("change") // mandamos el cambio
-      .trigger("input"); // se manda sobre el input
+  it('Debería mover el slider haciendo clic a la izquierda | Juan Yovera', () => {
+    cy.visit(pageSlider.url);
+    cy.get(pageSlider.priceSlider).click('left');
   });
+
 
   it("FRONT | Buscar Libro | Paul Soria", () => {
     cy.BuscarLibro();
