@@ -42,7 +42,7 @@ describe("Casos de prueba de APIs", () => {
       expect(response.user_id).to.not.be.null;
     });
   });
-  it("Verificar respuesta 401 al intentar loguearse con contraseña incorrecta", () => {
+  it.only("API | Verificar respuesta 401 al intentar loguearse con contraseña incorrecta | Luka Reyes", () => {
     cy.loginApi(user.username, "Automata699").then((response) => {
       expect(response.status).to.eq(401);
     });
