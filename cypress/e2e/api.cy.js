@@ -1,4 +1,4 @@
-import user from "../fixtures/user_luka.json";
+import user from "../fixtures/user.json";
 describe("Casos de prueba de APIs", () => {
   it.only("API | Comprar carrito exitosamente | Bianca Cascio", () => {
     cy.loginApi(user.username, user.password).then((res) => {

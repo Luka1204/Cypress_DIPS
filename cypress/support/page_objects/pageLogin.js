@@ -1,5 +1,4 @@
 
-import user_luka from "../../fixtures/user_luka.json";
 
 class pageLogin {
   typeUserName(name) {
