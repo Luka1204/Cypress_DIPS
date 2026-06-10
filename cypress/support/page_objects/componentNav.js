@@ -1,7 +1,7 @@
 class ComponentNav {
 
     validation(cant){
-        cy.get('#mat-badge-content-0').contains(cant).should('be.visible')
+        cy.get('.mat-badge-content').should('have.text', '0'+cant)
     }
 
     ClickShoppingCart(){

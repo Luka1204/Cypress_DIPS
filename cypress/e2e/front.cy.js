@@ -3,7 +3,7 @@ import user_luka from "../fixtures/user_luka.json";
 
 import url from "../fixtures/url.json";
 
-import componentNav from "../support/page_objects/componentNav";
+const componentNav = require("../support/page_objects/componentNav");
 
 import pageForm from "../support/page_objects/pageForm";
 import pageMyOrders from "../support/page_objects/pageMyOrders";
@@ -13,9 +13,12 @@ const PageCart = require("../support/page_objects/pageCart");
 
 describe("Casos de prueba de FRONT", () => {
   it("FRONT | Comprar carrito exitosamente y visualizar orden de compra | Bianca Cascio", () => {
-    cy.deleteCartAPI(user.userId);
+    
 
     cy.visit(url.login);
+    cy.loginApi(user.name, user.password).then((response) => {
+      cy.deleteCartAPI(response.user_id);
+     });
     cy.login(user.name, user.password);
 
     cy.url().should("include", url.home);
