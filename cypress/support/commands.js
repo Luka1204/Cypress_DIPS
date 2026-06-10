@@ -175,6 +175,22 @@ Cypress.Commands.add('AddToFavorite', (userId, itemId, token,codeResponse = 200)
     });
 });
 
+Cypress.Commands.add('ApiBook', (itemId,codeResponse = 200) => {
+    cy.request({
+        method: 'GET',
+        
+        url: `https://app.bookdbqa.online/api/Book/${itemId}`,
+        failOnStatusCode: false, 
+        headers: {
+            'accept': 'application/json',
+            'content-type': 'application/json'
+        },
+        body: {} 
+    }).then((response) => {
+        expect(response.status).to.eq(codeResponse);
+    });
+});
+
 
 
 

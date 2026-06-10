@@ -47,4 +47,12 @@ describe("Casos de prueba de APIs", () => {
       expect(response.status).to.eq(401);
     });
   });
+
+  it.only("API | Consultar libro mediante el ItemId EXISTENTE | Paul Soria" , () => {
+    cy.ApiBook(2,200);
+    });
+
+  it.only("API | Consultar libro mediante el ItemId INEXISTENTE | Paul Soria" , () => {
+    cy.ApiBook(5000,404);
+    });
 });
